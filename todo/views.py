@@ -13,7 +13,11 @@ def hello_world_json(request):
 
 
 def todo_list(request):
-    todos =  todo.objects.all()
+    search = request.GET.get("search")
+    if search:
+        todos =  todo.objects.filter(name__contains=search)
+    else:
+        todos = todo.objects.all()
     return render(request,"todo/todo.html",{"todos":todos})
 
 

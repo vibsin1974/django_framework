@@ -4,6 +4,20 @@
 
 <h1>todo list</h1>
 django template <br>
+<hr>
 {% for todo in  todos %}
-    {{todo}}<br>
-{% endfor %}
+    {% comment %} {{todo}}<br> {% endcomment %}
+    {{todo.name}}<br>
+
+    {% if todo.description %}
+        {{todo.description}}<br>
+    {% elif "파이썬" in todo.description %}
+        {{todo.description}}/{{todo.description}}<br>
+    {% else %}
+        no description<br>
+    {% endif %}
+    
+    {{todo.complete}}<br>
+    {{todo.exp}}<br>
+    <hr>
+{% endfor %} 
